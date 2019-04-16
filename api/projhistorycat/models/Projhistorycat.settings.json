@@ -1,0 +1,43 @@
+{
+  "connection": "default",
+  "collectionName": "projhistorycats",
+  "info": {
+    "name": "projhistorycat",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "catId": {
+      "default": "",
+      "type": "integer"
+    },
+    "catName": {
+      "default": "",
+      "type": "string"
+    },
+    "isChecked": {
+      "default": "",
+      "type": "integer"
+    },
+    "parentId": {
+      "default": "",
+      "type": "integer"
+    },
+    "project": {
+      "model": "project",
+      "via": "projhistorycats"
+    },
+    "timeCost": {
+      "default": "",
+      "type": "integer"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}

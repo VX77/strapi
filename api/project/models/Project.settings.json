@@ -1,0 +1,52 @@
+{
+  "connection": "default",
+  "collectionName": "projects",
+  "info": {
+    "name": "project",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "projName": {
+      "default": "",
+      "type": "string"
+    },
+    "compName": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "string"
+    },
+    "createTime": {
+      "default": "",
+      "type": "date"
+    },
+    "updateTime": {
+      "default": "",
+      "type": "date"
+    },
+    "isActive": {
+      "default": 1,
+      "type": "integer"
+    },
+    "user": {
+      "model": "user",
+      "via": "projects",
+      "plugin": "users-permissions"
+    },
+    "projhistorycats": {
+      "collection": "projhistorycat",
+      "via": "project"
+    },
+    "timeTotal": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}

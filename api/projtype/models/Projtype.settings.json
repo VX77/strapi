@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "projtypes",
+  "info": {
+    "name": "projtype",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "isActive": {
+      "default": 1,
+      "type": "integer"
+    },
+    "typeName": {
+      "default": "",
+      "type": "string"
+    },
+    "updateTime": {
+      "default": "",
+      "type": "date"
+    },
+    "catconfigs": {
+      "collection": "catconfig",
+      "via": "projtype"
+    }
+  }
+}

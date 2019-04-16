@@ -1,0 +1,583 @@
+"""each type of project will have its own categories"""
+type Catconfig {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  isActive: Int
+  category: Category
+  projtype: Projtype
+}
+
+input CatconfigInput {
+  isActive: Int
+  category: ID
+  projtype: ID
+}
+
+type Category {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  catName: String
+  catconfig: Catconfig
+  isActive: Int
+  parentId: Category
+  timeCost: Int
+  description: String
+}
+
+input CategoryInput {
+  catName: String
+  catconfig: ID
+  isActive: Int
+  parentId: ID
+  timeCost: Int
+  description: String
+}
+
+input createCatconfigInput {
+  data: CatconfigInput
+}
+
+type createCatconfigPayload {
+  catconfig: Catconfig
+}
+
+input createCategoryInput {
+  data: CategoryInput
+}
+
+type createCategoryPayload {
+  category: Category
+}
+
+input createProjectInput {
+  data: ProjectInput
+}
+
+type createProjectPayload {
+  project: Project
+}
+
+input createProjhistorycatInput {
+  data: ProjhistorycatInput
+}
+
+type createProjhistorycatPayload {
+  projhistorycat: Projhistorycat
+}
+
+input createProjtypeInput {
+  data: ProjtypeInput
+}
+
+type createProjtypePayload {
+  projtype: Projtype
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input createYomuserInput {
+  data: YomuserInput
+}
+
+type createYomuserPayload {
+  yomuser: Yomuser
+}
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
+
+input deleteCatconfigInput {
+  where: InputID
+}
+
+type deleteCatconfigPayload {
+  catconfig: Catconfig
+}
+
+input deleteCategoryInput {
+  where: InputID
+}
+
+type deleteCategoryPayload {
+  category: Category
+}
+
+input deleteProjectInput {
+  where: InputID
+}
+
+type deleteProjectPayload {
+  project: Project
+}
+
+input deleteProjhistorycatInput {
+  where: InputID
+}
+
+type deleteProjhistorycatPayload {
+  projhistorycat: Projhistorycat
+}
+
+input deleteProjtypeInput {
+  where: InputID
+}
+
+type deleteProjtypePayload {
+  projtype: Projtype
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteYomuserInput {
+  where: InputID
+}
+
+type deleteYomuserPayload {
+  yomuser: Yomuser
+}
+
+input editCatconfigInput {
+  isActive: Int
+  category: ID
+  projtype: ID
+}
+
+input editCategoryInput {
+  catName: String
+  catconfig: ID
+  isActive: Int
+  parentId: ID
+  timeCost: Int
+  description: String
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: String
+  url: String
+  provider: String
+  public_id: String
+  related: [ID]
+}
+
+input editProjectInput {
+  projName: String
+  compName: String
+  description: String
+  createTime: DateTime
+  updateTime: DateTime
+  isActive: Int
+  user: ID
+  projhistorycats: [ID]
+  timeTotal: Int
+}
+
+input editProjhistorycatInput {
+  catId: Int
+  catName: String
+  isChecked: Int
+  parentId: Int
+  project: ID
+  timeCost: Int
+  description: String
+}
+
+input editProjtypeInput {
+  isActive: Int
+  typeName: String
+  updateTime: DateTime
+  catconfigs: [ID]
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  projects: [ID]
+}
+
+input editYomuserInput {
+  usename: String
+  password: String
+  isActive: Int
+  isAdmin: Int
+}
+
+input FileInput {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Catconfig | createCatconfigPayload | updateCatconfigPayload | deleteCatconfigPayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Project | createProjectPayload | updateProjectPayload | deleteProjectPayload | Projhistorycat | createProjhistorycatPayload | updateProjhistorycatPayload | deleteProjhistorycatPayload | Projtype | createProjtypePayload | updateProjtypePayload | deleteProjtypePayload | Yomuser | createYomuserPayload | updateYomuserPayload | deleteYomuserPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  createCatconfig(input: createCatconfigInput): createCatconfigPayload
+  updateCatconfig(input: updateCatconfigInput): updateCatconfigPayload
+  deleteCatconfig(input: deleteCatconfigInput): deleteCatconfigPayload
+  createCategory(input: createCategoryInput): createCategoryPayload
+  updateCategory(input: updateCategoryInput): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createProject(input: createProjectInput): createProjectPayload
+  updateProject(input: updateProjectInput): updateProjectPayload
+  deleteProject(input: deleteProjectInput): deleteProjectPayload
+  createProjhistorycat(input: createProjhistorycatInput): createProjhistorycatPayload
+  updateProjhistorycat(input: updateProjhistorycatInput): updateProjhistorycatPayload
+  deleteProjhistorycat(input: deleteProjhistorycatInput): deleteProjhistorycatPayload
+  createProjtype(input: createProjtypeInput): createProjtypePayload
+  updateProjtype(input: updateProjtypeInput): updateProjtypePayload
+  deleteProjtype(input: deleteProjtypeInput): deleteProjtypePayload
+  createYomuser(input: createYomuserInput): createYomuserPayload
+  updateYomuser(input: updateYomuserInput): updateYomuserPayload
+  deleteYomuser(input: deleteYomuserInput): deleteYomuserPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
+}
+
+type Project {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  projName: String
+  compName: String
+  description: String
+  createTime: DateTime
+  updateTime: DateTime
+  isActive: Int
+  user: UsersPermissionsUser
+  timeTotal: Int
+  projhistorycats(sort: String, limit: Int, start: Int, where: JSON): [Projhistorycat]
+}
+
+input ProjectInput {
+  projName: String
+  compName: String
+  description: String
+  createTime: DateTime
+  updateTime: DateTime
+  isActive: Int
+  user: ID
+  projhistorycats: [ID]
+  timeTotal: Int
+}
+
+type Projhistorycat {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  catId: Int
+  catName: String
+  isChecked: Int
+  parentId: Int
+  project: Project
+  timeCost: Int
+  description: String
+}
+
+input ProjhistorycatInput {
+  catId: Int
+  catName: String
+  isChecked: Int
+  parentId: Int
+  project: ID
+  timeCost: Int
+  description: String
+}
+
+type Projtype {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  isActive: Int
+  typeName: String
+  updateTime: DateTime
+  catconfigs(sort: String, limit: Int, start: Int, where: JSON): [Catconfig]
+}
+
+input ProjtypeInput {
+  isActive: Int
+  typeName: String
+  updateTime: DateTime
+  catconfigs: [ID]
+}
+
+type Query {
+  catconfig(id: ID!): Catconfig
+  catconfigs(sort: String, limit: Int, start: Int, where: JSON): [Catconfig]
+  category(id: ID!): Category
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+  project(id: ID!): Project
+  projects(sort: String, limit: Int, start: Int, where: JSON): [Project]
+  projhistorycat(id: ID!): Projhistorycat
+  projhistorycats(sort: String, limit: Int, start: Int, where: JSON): [Projhistorycat]
+  projtype(id: ID!): Projtype
+  projtypes(sort: String, limit: Int, start: Int, where: JSON): [Projtype]
+  yomuser(id: ID!): Yomuser
+  yomusers(sort: String, limit: Int, start: Int, where: JSON): [Yomuser]
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input updateCatconfigInput {
+  where: InputID
+  data: editCatconfigInput
+}
+
+type updateCatconfigPayload {
+  catconfig: Catconfig
+}
+
+input updateCategoryInput {
+  where: InputID
+  data: editCategoryInput
+}
+
+type updateCategoryPayload {
+  category: Category
+}
+
+input updateProjectInput {
+  where: InputID
+  data: editProjectInput
+}
+
+type updateProjectPayload {
+  project: Project
+}
+
+input updateProjhistorycatInput {
+  where: InputID
+  data: editProjhistorycatInput
+}
+
+type updateProjhistorycatPayload {
+  projhistorycat: Projhistorycat
+}
+
+input updateProjtypeInput {
+  where: InputID
+  data: editProjtypeInput
+}
+
+type updateProjtypePayload {
+  projtype: Projtype
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateYomuserInput {
+  where: InputID
+  data: editYomuserInput
+}
+
+type updateYomuserPayload {
+  yomuser: Yomuser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  projects: [ID]
+}
+
+type UsersPermissionsMe {
+  _id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  _id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  projects(sort: String, limit: Int, start: Int, where: JSON): [Project]
+}
+
+type Yomuser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  usename: String
+  password: String
+  isActive: Int
+  isAdmin: Int
+}
+
+input YomuserInput {
+  usename: String
+  password: String
+  isActive: Int
+  isAdmin: Int
+}

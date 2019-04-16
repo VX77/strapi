@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/yomusers",
+      "handler": "Yomuser.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/yomusers/count",
+      "handler": "Yomuser.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/yomusers/:id",
+      "handler": "Yomuser.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/yomusers",
+      "handler": "Yomuser.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/yomusers/:id",
+      "handler": "Yomuser.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/yomusers/:id",
+      "handler": "Yomuser.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

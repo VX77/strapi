@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/catconfigs",
+      "handler": "Catconfig.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/catconfigs/count",
+      "handler": "Catconfig.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/catconfigs/:id",
+      "handler": "Catconfig.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/catconfigs",
+      "handler": "Catconfig.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/catconfigs/:id",
+      "handler": "Catconfig.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/catconfigs/:id",
+      "handler": "Catconfig.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

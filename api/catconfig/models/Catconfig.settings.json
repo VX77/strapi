@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "catconfigs",
+  "info": {
+    "name": "catconfig",
+    "description": "each type of project will have its own categories"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "isActive": {
+      "default": 1,
+      "type": "integer"
+    },
+    "category": {
+      "model": "category",
+      "via": "catconfig"
+    },
+    "projtype": {
+      "model": "projtype",
+      "via": "catconfigs"
+    }
+  }
+}

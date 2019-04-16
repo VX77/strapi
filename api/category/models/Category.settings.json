@@ -1,0 +1,38 @@
+{
+  "connection": "default",
+  "collectionName": "categories",
+  "info": {
+    "name": "category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "catName": {
+      "default": "",
+      "type": "string"
+    },
+    "catconfig": {
+      "model": "catconfig",
+      "via": "category"
+    },
+    "isActive": {
+      "default": 1,
+      "type": "integer"
+    },
+    "parentId": {
+      "model": "category"
+    },
+    "timeCost": {
+      "default": "",
+      "type": "integer"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}
